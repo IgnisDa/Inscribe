@@ -153,7 +153,7 @@ PASSWORD_HASHERS = [
 if not DEBUG:
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES["default"].update(db_from_env)
-    ALLOWED_HOSTS.append(".herokuapp.com")
+    ALLOWED_HOSTS.append(".ignisda.tech")
     PASSWORD_HASHERS.insert(0, "django.contrib.auth.hashers.Argon2PasswordHasher")
 
 
