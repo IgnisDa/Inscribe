@@ -18,4 +18,4 @@ COPY . ./
 
 RUN INSCRIBE_DEBUG=1 python manage.py collectstatic --noinput
 
-CMD gunicorn inscribe.wsgi --bind "0.0.0.0:${PORT}" --log-file -
+CMD /server/start.sh
