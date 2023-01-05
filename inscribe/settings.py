@@ -16,7 +16,7 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "dummy")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("INSCRIBE_DEBUG", False) != "1"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -127,7 +127,6 @@ STATICFILES_DIRS = [
 AUTH_USER_MODEL = "accounts.CustomUser"
 LOGIN_REDIRECT_URL = "home:index"
 if DEBUG:
-    ALLOWED_HOSTS += ["*"]
     CORS_ALLOW_ALL_ORIGINS = True
     SHELL_PLUS = "ipython"
     INSTALLED_APPS.append("django_extensions")
@@ -153,9 +152,6 @@ PASSWORD_HASHERS = [
 if not DEBUG:
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES["default"].update(db_from_env)
-    allowed_hosts = os.environ.get("DJANGO_ALLOWED_HOSTS")
-    if allowed_hosts:
-        ALLOWED_HOSTS += allowed_hosts.split(",")
     PASSWORD_HASHERS.insert(0, "django.contrib.auth.hashers.Argon2PasswordHasher")
 
 
