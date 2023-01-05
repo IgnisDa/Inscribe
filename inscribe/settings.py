@@ -172,3 +172,17 @@ STATIC_URL = "/static/"
 # this setting will control whether to use multiprocessing for graph generation
 # set it to True for multiprocessing otherwise False
 INSCRIBE_MULTIPROCESSING = True
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'WARNING',
+    },
+}
